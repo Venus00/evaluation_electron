@@ -1,19 +1,211 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Nextronic</title>
+    <style>
+        body {
+            background-image: url('css/images/feedback.gif');
+            background-size: cover;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #veryPoor {
+            position: absolute;
+            top: 230px;
+            left: 180px;
+            height: 100px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            width: 100px
+        }
+        
+        #poor {
+            position: absolute;
+            top: 230px;
+            left: 220px;
+            height: 100px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            width: 100px
+        }
+        
+        #average {
+            position: absolute;
+            top: 230px;
+            left: 250px;
+            height: 100px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            width: 100px
+        }
+        
+        #good {
+            position: absolute;
+            top: 230px;
+            left: 280px;
+            height: 100px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            width: 100px
+        }
+        
+        #excellent {
+            position: absolute;
+            top: 230px;
+            left: 300px;
+            height: 100px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            width: 100px
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="veryPoor" onclick="VeryPoor();"></button>
+    <button id="poor" onclick="Poor();"></button>
+    <button id="average" onclick="Average();"></button>
+    <button id="good" onclick="Good();"></button>
+    <button id="excellent" onclick="Excellent();"></button>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js" integrity="sha384-BnFYVbw3PHhz5qWXTCSL12MjPc3KxjdKPx7R4R5JjIzxFmYX267NDyJ9B/nZANdg" crossorigin="anonymous"></script>
+<script src="css/jquery.click-firewords.js"></script>
+<script src="sweetalert.min.js"></script>
+<script>
+    var audio = new Audio('css/message.mp3');
+    $(function() {
+        $('button').clickFireworks({
+            id: 'fireworks', // canvas id
+            appendTo: 'body', // append canvas to where, default is body
+            zIndex: 1000 // canvas z-index, make it higher than anything on the page
+        });
+    });
+
+    function VeryPoor() {
+
+        window.api.publishMQTT("VeryPoor");
+        //window.api.notify("VeryPoor");
+        Swal.fire({
+            title: "FeedBack Submited",
+            text: "Your FeedBack has been Submited Succefully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 4000,
+            position: "top-center",
+            footer: 'Develop by Nextronic'
+
+        });
+        audio.play();
+
+
+    }
+
+    function Poor() {
+
+        window.api.publishMQTT("Poor");
+        //window.api.notify("Poor");
+        Swal.fire({
+            title: "FeedBack Submited",
+            text: "Your FeedBack has been Submited Succefully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 4000,
+            position: "top-center",
+            footer: 'Develop by Nextronic'
+
+        });
+        audio.play();
+
+
+    }
+
+    function Average() {
+
+        window.api.publishMQTT("Average");
+        //window.api.notify("Average");
+        Swal.fire({
+            title: "FeedBack Submited",
+            text: "Your FeedBack has been Submited Succefully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 4000,
+            position: "top-center",
+            footer: 'Develop by Nextronic'
+
+        });
+        audio.play();
+
+
+    }
+
+    function Good() {
+
+        window.api.publishMQTT("Good");
+        //window.api.notify("Good");
+        Swal.fire({
+            title: "FeedBack Submited",
+            text: "Your FeedBack has been Submited Succefully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 4000,
+            position: "top-center",
+            footer: 'Develop by Nextronic'
+
+        });
+        audio.play();
+
+
+    }
+
+    function Excellent() {
+
+        window.api.publishMQTT("Excellent");
+        //window.api.notify("Excellent");
+        Swal.fire({
+            title: "FeedBack Submited",
+            text: "Your FeedBack has been Submited Succefully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 4000,
+            position: "top-center",
+            footer: 'Develop by Nextronic'
+        });
+        audio.play();
+
+
+    }
+</script>
+
 </html>
